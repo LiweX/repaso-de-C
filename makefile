@@ -1,4 +1,4 @@
-CFLAGS=-Wall -Werror -pedantic -Wextra -Wconversion -std=gnu11 -lm
+CFLAGS=-Wall -Werror -pedantic
 
 tp2: tp2.o myFuncs.o meminfo.o cpuinfo.o
 	gcc $(CFLAGS) -o tp2 myFuncs.o meminfo.o cpuinfo.o tp2.o
