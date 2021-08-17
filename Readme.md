@@ -7,7 +7,7 @@
 ```
 typedef struct{     //asi se declara un nuevo tipo de dato desde una estructura
     int a;          //se pueden agregar todos los tipos de datos que sean necesarios
-    char b;                                                                                                                                   
+    char b;     
 }Dato               //este seria el nombre del nuevo tipo de dato
 ```
 
