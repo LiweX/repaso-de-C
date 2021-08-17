@@ -3,49 +3,46 @@
 ### SOI - FCEFyN - UNC
 
 
-## Objetivo
-Sentar las bases del lenguaje para poder comprender los temas a presentar durante el curso y poder realizar las prácticas de programación propuestas durante el semestre.
+## Respuestas
+¿Cómo utilizar typedef junto a struct? ¿Para qué sirve? Ejemplo.
 
+typedef struct{     //asi se declara un nuevo tipo de dato a partir de una estructura
+    int a;          //se pueden agregar todos los tipos de datos que se quiera incluso tipos definidos antes con las siguientes limitaciones: -Hasta 65535 bytes por objeto
+    char b;                                                                                                                                   -1023 miembros por estructura
+}Dato               //este seria el nombre del nuevo tipo de dato
 
-## Duración
-Los temas que se enlistan a continuación son básicos de programación. Este laboratorio está diseñado para resolverse entre 6 y 8 horas.
+Permite generar tipos nuevos a conveniencia, algo asi como objetos en java pero sin metodos.
+Por ejemplo:
 
+typedef struct{
+    char nombre[30];
+    int edad;
+    long dni;
+    float altura;
+}Persona   
 
-## Actividades
-1. C-strings
-Realice las siguientes actividades:
-   1. Obtener la **memoria ram total**, **libre** y **disponible** en *Megabytes*. A partir del archivo */proc/meminfo*. 
-   1. Obtener la memoria *swap* **Ocupada**. A partir del archivo */proc/meminfo*.
-   1. Crear un programa en C que imprima información referida al CPU, a partir del archivo */proc/cpuinfo*:
-       - Modelo de CPU.
-       - Cantidad de cores 
-       - Cantidad de thread por cores.
+Aqui se define un tipo de dato "Persona" que almacena el nombre, edad, dni y altura de la persona en cuestion.
 
-3. Arreglos
-Lea el archivo */proc/version* y copie las palabras en un arreglo dinámico.
-Luego:
-   1. Imprima la lista de palabras en mayúscula. 
-   2. libere la memoria que haya alocado.
+¿Qué es packing and padding?
 
-4. Estructuras
-
-   1. Conteste las siguientes preguntas:
-     - ¿Cómo utilizar typedef junto a struct? ¿Para qué sirve? Ejemplo.
-     - ¿Qué es packing and padding ?
-
-   2. A partir de los archivos struct.h y lab2.c, asociados a este laboratorio:
-     - Genere un binario a partir de dichos archivos
-     - Responda las 3 preguntas que aparecen comentadas en el código.
-
-   3. Crear una lista simplemente enlazada. Escribir función que permite agregar un nodo al final de la lista.
-lalalala
-
-## ¿Qué entregar?
-- Se debe trabajar en GitHub Classroom. Es necesario subir los archivos de código en C y generar y subir un archivo markdown (.md) para las respuestas.
-- Se debe compilar utilizando *gcc -Wall -Werror -Pedantic*.
-- Aclaración: No subir binarios ni archivos de proyectos (eg: Eclipse). Solo archivos .h y .c.
-- Se recomienda ir haciendo git push incrementales al repositorio a medida que se desarrolla el trabajo.
-
-
-
-
+El packing en estructuras permite que los datos se guarden de manera contigua en memoria lo que produce que se desperdicien ciclos de reloj.
+Esto es asi porque, segun la arquitectura del del CPU, los datos se leen por tamaño de palabra: 4 bytes en 32bits y 8 bytes en 64bits
+Entonces, partiendo de la siguiente estructura:
+typedef struct{
+    char a;
+    char b;
+    int c;
+}dato;
+Si mi procesador es de 32 bits, los 2 chars entran en una palabra de 4bytes, pero el int no; quedara mitad del int en 2bytes de la palabra y la otra mitad en 2 bytes de la siguente.
+Esto causa que al procesador le lleve un ciclo de reloj extra para poder leer correctamente el entero.
+En cambio, el padding en extructuras permite que no se desperdicien ciclos de reloj, pero a cambio se desperdicia memoria.
+El padding en estructuras se da de la siguiente manera:
+Volviendo al ejemplo anterior, los dos chars siguen entrando en una palabra de 32bits, pero para el entero se dejaran 2 bytes vacios de la primera palabra para colocarlo en la siguiente.
+Se estan desperdiciando 2 bytes y el tamaño de la estructura es mas grande: 8 bytes contra los 6 bytes si se optara por el packing de la misma estructura.
+Inlcuso esto empeora si se cambia el orden de los tipos en la estructura:
+typedef struct{
+    char a;
+    int b;
+    char c;
+}Dato;
+Ahora el tamaño de esta estructura es de 12 bytes ya que el entero sigue sin poder entrar en una sola palabra y ademas se ocupa una palabra extra para guardar el ultimo char.
