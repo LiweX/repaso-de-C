@@ -2,7 +2,6 @@
 # Repaso Lenguaje C
 ### SOI - FCEFyN - UNC
 
-
 ## Respuestas
 ### ¿Cómo utilizar typedef junto a struct? ¿Para qué sirve? Ejemplo.
 ```
@@ -54,4 +53,16 @@ Ahora el tamaño de esta estructura es de 12 bytes ya que el entero sigue sin po
 
 ## Preguntas del codigo
 ### Explique a que se debe los tamaños de cada una de las estructuras
-![alt text](https://raw.githubusercontent.com/ICOMP-UNC/laboratorio-2-LiweX/master/Structre%20sizes.png?token=AO7HJAJRMVV5EZZFQUIDB33BDQVRK)
+![alt text](https://github.com/ICOMP-UNC/laboratorio-2-LiweX/blob/master/Structre%20sizes.png)
+
+### Explique por que la expresion que calcula  limit y limit_aux generan el mismo resutado
+`char *limit = ((char *) &data + sizeof(BaseData));`
+
+Aqui se realiza un desplazamiento en una determinada cantidad de bytes. En este caso se corre tantos bytes como el tamaño de BaseData
+
+`char *limit_aux =(char *) (&data + 1);`
+
+Aqui usando aritmetica de punteros el desplazamiento es hacia un "BaseData" mas adelante. Dan el mismo resultado por que en ambos casos me muevo la misma cantidad de bytes
+
+### Explique los valores que se muestran en pantalla en cada iteracion del for
+![alt text](https://github.com/ICOMP-UNC/laboratorio-2-LiweX/blob/master/data%20size.png)
