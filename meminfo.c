@@ -39,4 +39,5 @@ void meminfo(void){
     printf("Memoria Libre: %d Mb\n",meminfo.free/1000);
     printf("Memoria Disponible: %d Mb\n",meminfo.available/1000);
     printf("Memoria Ocupada: %d Mb\n",meminfo.swap/1000);
+    fclose(file);
 }
