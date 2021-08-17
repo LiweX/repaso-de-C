@@ -51,3 +51,7 @@ typedef struct{
 }Dato;
 ```
 Ahora el tamaño de esta estructura es de 12 bytes ya que el entero sigue sin poder entrar en una sola palabra y ademas se ocupa una palabra extra para guardar el ultimo char.
+
+## Preguntas del codigo
+### Explique a que se debe los tamaños de cada una de las estructuras
+![alt text](https://raw.githubusercontent.com/ICOMP-UNC/laboratorio-2-LiweX/master/Structre%20sizes.png?token=AO7HJAJRMVV5EZZFQUIDB33BDQVRK)
