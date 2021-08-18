@@ -8,7 +8,7 @@
 Las primeras consignas practicas se resolvieron en modulos separados para practicar el linkeo de objetos y refrescar el uso de makefile.
 Para ejecutar el programa se debe clonar el repositorio o descargarlo, abrir una terminal en esa carpeta y usar estos comandos:
  ```
-make
+make tp2
 ./tp2
  ```
 El programa primero imprime la informacion solicitada de `/proc/meminfo`, luego continua mostrando la info requerida de `/proc/cpuinfo`, y por ultimo se enlistan las palabras en mayusculas de  `/proc/version` contenidas en un arreglo dinamico.

@@ -18,5 +18,8 @@ cpuinfo.o: cpuinfo.c cpuinfo.h myFuncs.h
 version.o: version.c version.h myFuncs.h
 	gcc $(CFLAGS) -c version.c
 
+lista: lista.c
+	gcc $(CFLAGS) lista.c -o lista
+
 clean:
-	rm -f *.o tp2
+	rm -f *.o tp2 lista
