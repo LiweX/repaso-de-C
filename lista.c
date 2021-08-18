@@ -24,6 +24,8 @@ int main(){
     addNode(lista,3);
     addNode(lista,7);
     mostrarLista(lista);
+    free(lista);
+    return 0;
 }
 
 void listInit(Lista* lista){
