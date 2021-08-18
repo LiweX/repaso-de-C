@@ -24,6 +24,6 @@ void version(void){
     }
     
     for(int j=0;j<i;j++) printf("%s\n",palabras[j]);
-
+    fclose(file);
     free(palabras);
 }
