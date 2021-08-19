@@ -82,4 +82,36 @@ Respecto a la consigna de la lista simplemente enlazada, esta se encuentra resue
 make lista
 ./lista
 ```
-El programa crea una lista del tamaño solicitado por el usuario con una cantidad maxima de 30 numeros.
+El programa crea una lista y dispone de un menu que permite al usuario añadir a esta los numeros que desee, hasta que decida finalizar su ejecucion. Para esto se dispone de las siguientes estructuras:
+```
+typedef struct Nodo{
+    int numero;
+    struct Nodo* next;   
+}Nodo;
+
+typedef struct Lista{
+    Nodo* inicio;
+    Nodo* fin;
+    int size;
+}Lista;
+```
+A medida que se añaden numeros se van creando nodos por medio de la funcion `addNode(Lista* lista,int dato)`,la cual se encarga de ir enlazando correctamente los punteros de los nodos y corrige el puntero del inicio y el del fin de la lista, y lleva la cuenta de la cantidad de elementos.
+```
+void addNode(Lista* lista,int dato){
+    if(lista->size==0){   // agregar el primer nodo
+        Nodo* newNode = (Nodo*)malloc(sizeof(Nodo));
+        newNode->next=NULL;
+        newNode->numero=dato;
+        lista->inicio=newNode;
+        lista->fin=newNode;
+        lista->size=1;
+    }else{                  //la lista ya tiene nodos
+        Nodo* newNode = (Nodo*)malloc(sizeof(Nodo));
+        newNode->next=NULL;
+        newNode->numero=dato;
+        lista->fin->next = newNode;   //el ultimo nodo ahora apunta hacia el nuevo nodo
+        lista->fin = newNode;         //el nuevo todo ahora es el ultimo de la lista
+        lista->size=(lista->size)+1;
+    }
+}
+```
