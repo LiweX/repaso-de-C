@@ -82,7 +82,7 @@ Respecto a la consigna de la lista simplemente enlazada, esta se encuentra resue
 make lista
 ./lista
 ```
-El programa crea una lista y dispone de un menu que permite al usuario añadir a esta los numeros que desee, hasta que decida finalizar su ejecucion. Para esto se dispone de las siguientes estructuras:
+El programa crea una lista y dispone de un menu que permite al usuario añadir,de a uno a la vez, los numeros que desee, hasta que decida finalizar su ejecucion. Para esto se dispone de las siguientes estructuras:
 ```
 typedef struct Nodo{
     int numero;
@@ -95,7 +95,7 @@ typedef struct Lista{
     int size;
 }Lista;
 ```
-A medida que se añaden numeros se van creando nodos por medio de la funcion `addNode(Lista* lista,int dato)`,la cual se encarga de ir enlazando correctamente los punteros de los nodos y corrige el puntero del inicio y el del fin de la lista, y lleva la cuenta de la cantidad de elementos.
+A medida que se añaden numeros se van creando nodos por medio de la funcion `addNode(Lista* lista,int dato)`,la cual se encarga de ir enlazando correctamente los punteros de los nodos, corrige el puntero del inicio y del fin de la lista, y lleva la cuenta de la cantidad de elementos.
 ```
 void addNode(Lista* lista,int dato){
     if(lista->size==0){   // agregar el primer nodo
@@ -115,3 +115,4 @@ void addNode(Lista* lista,int dato){
     }
 }
 ```
+No se valida la entrada de datos del usuario, usar con discrecion.
