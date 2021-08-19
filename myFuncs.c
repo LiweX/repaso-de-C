@@ -1,6 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
+void delaySEG(int segundos){
+    int final =(int)time(0) + segundos;
+    while(time(0)<final);
+}
 FILE* openFile(char* path){
     FILE *file;
     file = fopen(path,"r");

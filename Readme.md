@@ -75,3 +75,11 @@ Aqui usando aritmetica de punteros el desplazamiento es hacia un "BaseData" mas 
 
 ### Explique los valores que se muestran en pantalla en cada iteracion del for
 ![alt text](https://github.com/ICOMP-UNC/laboratorio-2-LiweX/blob/master/data%20size.png)
+
+## Lista simplemente enlazada
+Respecto a la consigna de la lista simplemente enlazada, esta se encuentra resuelta en el archivo `lista.c`. Dicho archivo puede compilar y correrse con los siguientes comandos:
+```
+make lista
+./lista
+```
+El programa crea una lista del tamaño solicitado por el usuario con una cantidad maxima de 30 numeros.
